@@ -4,7 +4,7 @@ services:
   php-fpm:
     build: ./build/php-fpm
     volumes:
-      - ./src:/var/www
+      - ${APP_PATH}:/var/www
     expose:
       - "9000"
     links:
@@ -16,7 +16,7 @@ services:
     build: ./build/nginx
     volumes:
       - ./logs/nginx/:/var/log/nginx
-      - ./src:/var/www
+      - ${APP_PATH}:/var/www
     ports:
       - "80:80"
       - "443:443"
@@ -51,7 +51,7 @@ services:
   workspace:
     build: ./build/workspace
     volumes:
-      - ./src:/var/www
+      - ${APP_PATH}:/var/www
     links:
       - mysql
       - redis

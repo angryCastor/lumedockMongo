@@ -13,6 +13,10 @@ RUN docker-php-ext-install \
     pdo_mysql \
     pdo_pgsql
 
+RUN apt-get install -y libcurl4-openssl-dev pkg-config libssl-dev
+
+RUN pecl install mongodb
+
 RUN usermod -u 1000 www-data
 
 WORKDIR /var/www
